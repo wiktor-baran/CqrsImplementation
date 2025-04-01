@@ -1,0 +1,30 @@
+services:
+  writeDb:
+    container_name: writeDb
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD: 'P@ssw0rd'
+    ports:
+      - "1433:1433"
+
+  readDb:
+    container_name: readDb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  task06_currencies:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+    depends_on:
+      - writeDb
+      - readDb
+    ports:
+      - "6041:8080"
+      - "6091:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

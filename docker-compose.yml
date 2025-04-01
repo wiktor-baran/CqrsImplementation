@@ -1,0 +1,12 @@
+services:
+  task06_currencies:
+    image: ${DOCKER_REGISTRY-}task06currencies
+    build:
+      context: .
+      dockerfile: task06_Currencies/Dockerfile
+
+  writeDb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+
+  readDb:
+    image: mongo:latest
