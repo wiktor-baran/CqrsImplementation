@@ -1,12 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
-using System;
-using task06_Currencies.Repositories;
-using task06_Currencies.Repositories.Entities;
+using task06_Currencies.Repositories.WriteDb;
+using task06_Currencies.Repositories.WriteDb.Entities;
+using task06_Currencies.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddMediatR(cfg =>
 {
@@ -21,6 +19,8 @@ builder.Services.AddSingleton(sp =>
     var client = new MongoClient(builder.Configuration.GetConnectionString("ReadDb"));
     return client.GetDatabase("CurrenciesDb");
 });
+
+builder.Services.AddHostedService<OutboxProcessorService>();
 
 builder.Services.AddControllers();
 

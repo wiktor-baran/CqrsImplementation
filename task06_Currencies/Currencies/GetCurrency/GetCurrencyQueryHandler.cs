@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using MongoDB.Driver;
-using task06_Currencies.Repositories.Entities;
+using task06_Currencies.Repositories.ReadDb.Entities;
 
 namespace task06_Currencies.Currencies.GetCurrency
 {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace task06_Currencies.Repositories.Entities
+namespace task06_Currencies.Repositories.WriteDb.Entities
 {
     public class Currency
     {

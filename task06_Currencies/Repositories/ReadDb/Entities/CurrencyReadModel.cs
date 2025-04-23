@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
-namespace task06_Currencies.Repositories.Entities
+namespace task06_Currencies.Repositories.ReadDb.Entities
 {
     public class CurrencyReadModel
     {
